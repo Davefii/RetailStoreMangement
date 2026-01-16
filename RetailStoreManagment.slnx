@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="BussinessLayer/BussinessLayer.csproj" Id="e02edf3c-812c-4da4-93a1-d6a4321bf6cb" />
+  <Project Path="DataAccessLayer/DataAccessLayer.csproj" Id="594b8981-b6b5-439a-94f7-47c51272be0f" />
+  <Project Path="DataAccessSettings/DataAccessSettings.csproj" Id="f3422f75-3fb1-41ff-866d-f11dab6b634e" />
+  <Project Path="RetailStoreManagment.csproj" Id="64092067-24b9-4158-8847-768d643badd8" />
+</Solution>

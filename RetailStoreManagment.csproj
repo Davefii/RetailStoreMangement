@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{64092067-24B9-4158-8847-768D643BADD8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>RetailStoreManagment</RootNamespace>
+    <AssemblyName>RetailStoreManagment</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BussinessLayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BussinessLayer\bin\Debug\BussinessLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Products\AddorUpdateProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\AddorUpdateProduct.Designer.cs">
+      <DependentUpon>AddorUpdateProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Products\ctrlProductInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Products\ctrlProductInfo.Designer.cs">
+      <DependentUpon>ctrlProductInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Products\ctrlProductwithfilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Products\ctrlProductwithfilter.Designer.cs">
+      <DependentUpon>ctrlProductwithfilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Products\ListProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\ListProducts.Designer.cs">
+      <DependentUpon>ListProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\addsale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\addsale.Designer.cs">
+      <DependentUpon>addsale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Suppliers\AddorUpdateSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Suppliers\AddorUpdateSupplier.Designer.cs">
+      <DependentUpon>AddorUpdateSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Suppliers\CtrlSupplierInfowithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Suppliers\CtrlSupplierInfowithFilter.Designer.cs">
+      <DependentUpon>CtrlSupplierInfowithFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Suppliers\FrmSupplierinfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Suppliers\FrmSupplierinfo.Designer.cs">
+      <DependentUpon>FrmSupplierinfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Suppliers\ListSuppliers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Suppliers\ListSuppliers.Designer.cs">
+      <DependentUpon>ListSuppliers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Suppliers\SupplierInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Suppliers\SupplierInfo.Designer.cs">
+      <DependentUpon>SupplierInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\AddorUpdateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\AddorUpdateUser.Designer.cs">
+      <DependentUpon>AddorUpdateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\clsGlobal.cs" />
+    <Compile Include="User\ctrlUserInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User\ctrlUserInfo.Designer.cs">
+      <DependentUpon>ctrlUserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Listhistorylogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Listhistorylogin.Designer.cs">
+      <DependentUpon>Listhistorylogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\ListUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\ListUsers.Designer.cs">
+      <DependentUpon>ListUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\UserInfomration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\UserInfomration.Designer.cs">
+      <DependentUpon>UserInfomration.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Products\AddorUpdateProduct.resx">
+      <DependentUpon>AddorUpdateProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\ctrlProductInfo.resx">
+      <DependentUpon>ctrlProductInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\ctrlProductwithfilter.resx">
+      <DependentUpon>ctrlProductwithfilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\ListProducts.resx">
+      <DependentUpon>ListProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales\addsale.resx">
+      <DependentUpon>addsale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Suppliers\AddorUpdateSupplier.resx">
+      <DependentUpon>AddorUpdateSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Suppliers\CtrlSupplierInfowithFilter.resx">
+      <DependentUpon>CtrlSupplierInfowithFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Suppliers\FrmSupplierinfo.resx">
+      <DependentUpon>FrmSupplierinfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Suppliers\ListSuppliers.resx">
+      <DependentUpon>ListSuppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Suppliers\SupplierInfo.resx">
+      <DependentUpon>SupplierInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\AddorUpdateUser.resx">
+      <DependentUpon>AddorUpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\ctrlUserInfo.resx">
+      <DependentUpon>ctrlUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Listhistorylogin.resx">
+      <DependentUpon>Listhistorylogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\ListUsers.resx">
+      <DependentUpon>ListUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\UserInfomration.resx">
+      <DependentUpon>UserInfomration.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\supplier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\rectangle-list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\profilePassword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\search_3917132.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Screenshot\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

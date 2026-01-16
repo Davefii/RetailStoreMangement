@@ -1,0 +1,6 @@
+E:\source\repos\RetailStoreManagment\DataAccessSettings\bin\Debug\DataAccessSettings.dll
+E:\source\repos\RetailStoreManagment\DataAccessSettings\bin\Debug\DataAccessSettings.pdb
+E:\source\repos\RetailStoreManagment\DataAccessSettings\obj\Debug\DataAccessSettings.csproj.AssemblyReference.cache
+E:\source\repos\RetailStoreManagment\DataAccessSettings\obj\Debug\DataAccessSettings.csproj.CoreCompileInputs.cache
+E:\source\repos\RetailStoreManagment\DataAccessSettings\obj\Debug\DataAccessSettings.dll
+E:\source\repos\RetailStoreManagment\DataAccessSettings\obj\Debug\DataAccessSettings.pdb

@@ -1,0 +1,9 @@
+E:\source\repos\RetailStoreManagment\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+E:\source\repos\RetailStoreManagment\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+E:\source\repos\RetailStoreManagment\DataAccessLayer\bin\Debug\DataAccessSettings.dll
+E:\source\repos\RetailStoreManagment\DataAccessLayer\bin\Debug\DataAccessSettings.pdb
+E:\source\repos\RetailStoreManagment\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.AssemblyReference.cache
+E:\source\repos\RetailStoreManagment\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+E:\source\repos\RetailStoreManagment\DataAccessLayer\obj\Debug\DataAcce.E67BD773.Up2Date
+E:\source\repos\RetailStoreManagment\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+E:\source\repos\RetailStoreManagment\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
