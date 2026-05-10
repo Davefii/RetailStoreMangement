@@ -14,7 +14,7 @@ namespace RetailStoreManagment.Sales
     public partial class addsale : Form
     {
         private int _SaleID = -1;
-        clsSales _sale;
+        BussinessLayer.Sales _sale;
         public addsale()
         {
             InitializeComponent();
@@ -36,7 +36,7 @@ namespace RetailStoreManagment.Sales
         }
         private void LoadDataAddMode()
         {
-            _sale = new clsSales();
+            _sale = new BussinessLayer.Sales();
             tabPage2.Enabled = false;
             this.Text = "Create Sale";
         }
@@ -46,7 +46,7 @@ namespace RetailStoreManagment.Sales
             btnSave.Enabled = false;
             btnNext.Enabled = false;
             ctrlProductwithfilter1.FilterEnabled = false;
-            _sale = clsSales.GetSaleByID(_SaleID);
+            _sale = BussinessLayer.Sales.GetSaleByID(_SaleID);
             ctrlProductwithfilter1.LoadProduct(_sale.Product_ID);
             tabPage2.Enabled = true;
             txbquantity.Text = _sale.Quantity.ToString();
@@ -89,7 +89,7 @@ namespace RetailStoreManagment.Sales
                 _SaleID = _sale.ID;
                 lblID.Text = _sale.ID.ToString();
                 this.Text = "Show Sale";
-                _sale.Mode = clsSales.enMode.Update;
+                _sale.Mode = BussinessLayer.Sales.enMode.Update;
                 addsale_Load(null, null);
             }
             else

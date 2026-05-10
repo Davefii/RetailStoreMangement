@@ -19,7 +19,7 @@ namespace RetailStoreManagment.User
         }
         private void LoadData()
         {
-            dataGridView1.DataSource = clsUsers.GetHistoryUserlogin();
+            dataGridView1.DataSource = Users.GetHistoryUserlogin();
         }
         private void Listhistorylogin_Load(object sender, EventArgs e)
         {

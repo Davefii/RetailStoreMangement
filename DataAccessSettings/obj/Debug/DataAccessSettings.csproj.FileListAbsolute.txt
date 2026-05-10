@@ -4,3 +4,9 @@ E:\source\repos\RetailStoreManagment\DataAccessSettings\obj\Debug\DataAccessSett
 E:\source\repos\RetailStoreManagment\DataAccessSettings\obj\Debug\DataAccessSettings.csproj.CoreCompileInputs.cache
 E:\source\repos\RetailStoreManagment\DataAccessSettings\obj\Debug\DataAccessSettings.dll
 E:\source\repos\RetailStoreManagment\DataAccessSettings\obj\Debug\DataAccessSettings.pdb
+C:\Users\Asus\source\repos\Davefii\RetailStoreMangement\DataAccessSettings\bin\Debug\DataAccessSettings.dll
+C:\Users\Asus\source\repos\Davefii\RetailStoreMangement\DataAccessSettings\bin\Debug\DataAccessSettings.pdb
+C:\Users\Asus\source\repos\Davefii\RetailStoreMangement\DataAccessSettings\obj\Debug\DataAccessSettings.csproj.AssemblyReference.cache
+C:\Users\Asus\source\repos\Davefii\RetailStoreMangement\DataAccessSettings\obj\Debug\DataAccessSettings.csproj.CoreCompileInputs.cache
+C:\Users\Asus\source\repos\Davefii\RetailStoreMangement\DataAccessSettings\obj\Debug\DataAccessSettings.dll
+C:\Users\Asus\source\repos\Davefii\RetailStoreMangement\DataAccessSettings\obj\Debug\DataAccessSettings.pdb

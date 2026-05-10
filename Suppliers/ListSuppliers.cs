@@ -20,7 +20,7 @@ namespace RetailStoreManagment
         }
         private void LoadData()
         {
-            dataGridView1.DataSource = clsSupplier.GetAllSupplier();
+            dataGridView1.DataSource = Supplier.GetAllSupplier();
             dataGridView1.Columns[4].Width = 150;
         }
         private void ListSuppliers_Load(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace RetailStoreManagment
         private void btnaddsupplier_Click(object sender, EventArgs e)
         {
             AddorUpdateSupplier addorUpdateSupplier = new AddorUpdateSupplier();
-            if (clsGlobal.CheckPermition(clsUsers.enMainMenuPermitions.Admin))
+            if (clsGlobal.CheckPermition(Users.enMainMenuPermitions.Admin))
             {
                 addorUpdateSupplier.ShowDialog();
             }
@@ -46,8 +46,8 @@ namespace RetailStoreManagment
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int SupplierID = (int)dataGridView1.CurrentRow.Cells[0].Value;
-            clsSupplier supplier = clsSupplier.GetSupplierByID(SupplierID);
-            if (clsGlobal.CheckPermition(clsUsers.enMainMenuPermitions.Admin))
+            Supplier supplier = Supplier.GetSupplierByID(SupplierID);
+            if (clsGlobal.CheckPermition(Users.enMainMenuPermitions.Admin))
             {
                 if (MessageBox.Show("Are You Sure Delete This Supplier ? ", "Ensure", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
                 {
@@ -71,7 +71,7 @@ namespace RetailStoreManagment
         {
             int SupplierID = (int)dataGridView1.CurrentRow.Cells[0].Value;
             AddorUpdateSupplier addorUpdateSupplier = new AddorUpdateSupplier(SupplierID);
-            if (clsGlobal.CheckPermition(clsUsers.enMainMenuPermitions.Admin))
+            if (clsGlobal.CheckPermition(Users.enMainMenuPermitions.Admin))
             {
                 addorUpdateSupplier.ShowDialog();
             }

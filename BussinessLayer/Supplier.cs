@@ -8,7 +8,7 @@ using DataAccessLayer;
 
 namespace BussinessLayer
 {
-    public class clsSupplier
+    public class Supplier
     {
         public enum enMode { AddNew = 0, Update = 1}
         public int ID {  get; set; }
@@ -19,7 +19,7 @@ namespace BussinessLayer
         public string Email { get; set; }
         public bool Status { get; set; }
         public enMode Mode;
-        public clsSupplier()
+        public Supplier()
         {
             this.ID = -1;
             this.Supplier_Name = string.Empty;
@@ -30,7 +30,7 @@ namespace BussinessLayer
             this.Status = false;
             this.Mode = enMode.AddNew;
         }
-        private clsSupplier(int ID,string SupplierName, string ContactPerson, string PhoneNumber, string Address, string Email, bool Status)
+        private Supplier(int ID,string SupplierName, string ContactPerson, string PhoneNumber, string Address, string Email, bool Status)
         {
             this.ID = ID;
             this.Supplier_Name = SupplierName;
@@ -49,21 +49,21 @@ namespace BussinessLayer
         {
             return DataSuppiers.GetAllSuppliers();
         }
-        public static clsSupplier GetSupplierByID(int ID)
+        public static Supplier GetSupplierByID(int ID)
         {
              string SupplierName = "";  string ContactPerson = "";  string PhoneNumber = "";  string Address = "";  string Email = "";  bool Status = false;
             bool isFound = DataAccessLayer.DataSuppiers.GetSupplierbyID(ID, ref SupplierName, ref ContactPerson, ref Email, ref PhoneNumber, ref Address, ref Status);
             if (isFound)
-                return new clsSupplier(ID, SupplierName, ContactPerson, PhoneNumber, Address, Email, Status);
+                return new Supplier(ID, SupplierName, ContactPerson, PhoneNumber, Address, Email, Status);
             else
                 return null;
         }
-        public static clsSupplier GetSupplierByName(string SupplierName)
+        public static Supplier GetSupplierByName(string SupplierName)
         {
             int ID = -1; string ContactPerson = ""; string PhoneNumber = ""; string Address = ""; string Email = ""; bool Status = false;
             bool isFound = DataAccessLayer.DataSuppiers.GetSupplierbyName(ref ID, SupplierName, ref ContactPerson, ref Email, ref PhoneNumber, ref Address, ref Status);
             if (isFound)
-                return new clsSupplier(ID, SupplierName, ContactPerson, PhoneNumber, Address, Email, Status);
+                return new Supplier(ID, SupplierName, ContactPerson, PhoneNumber, Address, Email, Status);
             else
                 return null;
         }

@@ -15,9 +15,9 @@ namespace RetailStoreManagment.Suppliers
     {
         private int _ID = -1;
         private string _SupplierName = string.Empty;
-        private clsSupplier _supplier;
+        private Supplier _supplier;
         public int Supplier_ID { get { return _ID; } }
-        public clsSupplier SelectedSupplierInfo { get { return _supplier; }  }
+        public Supplier SelectedSupplierInfo { get { return _supplier; }  }
         public SupplierInfo()
         {
             InitializeComponent();
@@ -25,7 +25,7 @@ namespace RetailStoreManagment.Suppliers
         public void LoadData(int SupplierID)
         {
             _ID = SupplierID;
-            _supplier = clsSupplier.GetSupplierByID(_ID);
+            _supplier = Supplier.GetSupplierByID(_ID);
             if (_supplier == null)
             {
                 MessageBox.Show("Supplier Doesn't Exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -42,7 +42,7 @@ namespace RetailStoreManagment.Suppliers
         public void LoadData(string SupplierName)
         {
             _SupplierName = SupplierName;
-            _supplier = clsSupplier.GetSupplierByName(_SupplierName);
+            _supplier = Supplier.GetSupplierByName(_SupplierName);
             if (_supplier == null)
             {
                 MessageBox.Show("Supplier Doesn't Exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

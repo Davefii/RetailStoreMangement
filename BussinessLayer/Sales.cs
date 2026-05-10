@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BussinessLayer
 {
-    public class clsSales
+    public class Sales
     {
         public enum enMode { AddNew = 0, Update = 1 }
         public int ID { get; set; }
@@ -16,12 +16,12 @@ namespace BussinessLayer
         public int Quantity { get; set; }
         public DateTime SaleDate { get; set; }
         public int User_ID { get; set; }
-        public int TotalPrice { get { clsProducts product = clsProducts.GetProductByID(this.Product_ID); return product.price * Quantity; } }
+        public int TotalPrice { get { Products product = Products.GetProductByID(this.Product_ID); return product.price * Quantity; } }
         public enMode Mode;
-        public clsSupplier supplierInfo;
-        public clsProducts productinfo;
-        public clsUsers user;
-        public clsSales()
+        public Supplier supplierInfo;
+        public Products productinfo;
+        public Users user;
+        public Sales()
         {
             this.ID = -1;
             this.Product_ID = -1;
@@ -30,14 +30,14 @@ namespace BussinessLayer
             this.User_ID = 0;
             Mode = enMode.AddNew;
         }
-        private clsSales(int ID,int product_ID, int quantity, DateTime SaleDate, int user_ID, int TotalPrice)
+        private Sales(int ID,int product_ID, int quantity, DateTime SaleDate, int user_ID, int TotalPrice)
         {
             this.ID = ID;
             this.Product_ID = product_ID;
             this.Quantity = quantity;
             this.SaleDate = SaleDate;
             this.User_ID = user_ID;
-            user = clsUsers.GetUserByID(this.User_ID);
+            user = Users.GetUserByID(this.User_ID);
             Mode = enMode.Update;
         }
         public static int GetTotalSales()
@@ -48,12 +48,12 @@ namespace BussinessLayer
         {
             return DataSeles.GetAllSeles();
         }
-        public static clsSales GetSaleByID(int ID)
+        public static Sales GetSaleByID(int ID)
         {
             int product_ID = -1; int quantity = 0; DateTime SaleDate = DateTime.MinValue; int user_ID = -1; int TotalPrice = 0;
             bool isFound = DataSeles.getSaleByID(ID, ref product_ID, ref quantity, ref SaleDate, ref user_ID, ref TotalPrice);
             if (isFound)
-                return new clsSales(ID, product_ID, quantity, SaleDate, user_ID, TotalPrice);
+                return new Sales(ID, product_ID, quantity, SaleDate, user_ID, TotalPrice);
             else
                 return null;
         }

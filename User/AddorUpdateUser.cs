@@ -8,14 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static BussinessLayer.clsUsers;
+using static BussinessLayer.Users;
 
 namespace RetailStoreManagment.User
 {
     public partial class AddorUpdateUser : Form
     {
         private int _UserID = -1;
-        private clsUsers _User;
+        private Users _User;
         public AddorUpdateUser()
         {
             InitializeComponent();
@@ -27,12 +27,12 @@ namespace RetailStoreManagment.User
         }
         private void LoadDataAddMode()
         {
-            _User = new clsUsers();
+            _User = new Users();
             this.Text = "Add User";
         }
         private void LoadDataUpdateMode()
         {
-            _User = clsUsers.GetUserByID(_UserID);
+            _User = Users.GetUserByID(_UserID);
             if (_User == null)
             {
                 MessageBox.Show("Cannot Find this User","Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
@@ -45,9 +45,9 @@ namespace RetailStoreManagment.User
             txbPassword.Text = _User.Password;
             txbconfiminpassword.Text = _User.Password;
             checkBox1.Checked = _User.isActive;
-            chkAdmin.Checked = _User.Permitions.HasFlag(clsUsers.enMainMenuPermitions.Admin);
-            chkstafforcashier.Checked = _User.Permitions.HasFlag(clsUsers.enMainMenuPermitions.StaffOrCashier);
-            chkViewer.Checked = _User.Permitions.HasFlag(clsUsers.enMainMenuPermitions.Admin);
+            chkAdmin.Checked = _User.Permitions.HasFlag(Users.enMainMenuPermitions.Admin);
+            chkstafforcashier.Checked = _User.Permitions.HasFlag(Users.enMainMenuPermitions.StaffOrCashier);
+            chkViewer.Checked = _User.Permitions.HasFlag(Users.enMainMenuPermitions.Admin);
         }
 
         private void AddorUpdateUser_Load(object sender, EventArgs e)

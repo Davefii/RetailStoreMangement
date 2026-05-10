@@ -20,7 +20,7 @@ namespace RetailStoreManagment.Products
         }
         private void LoadData()
         {
-            dataGridView1.DataSource = clsProducts.GetAllProduct();
+            dataGridView1.DataSource = BussinessLayer.Products.GetAllProduct();
         }
         private void ListProducts_Load(object sender, EventArgs e)
         {
@@ -37,7 +37,7 @@ namespace RetailStoreManagment.Products
         private void button1_Click(object sender, EventArgs e)
         {
             AddorUpdateProduct addorUpdateProduct = new AddorUpdateProduct();
-            if (clsGlobal.CheckPermition(clsUsers.enMainMenuPermitions.Admin))
+            if (clsGlobal.CheckPermition(Users.enMainMenuPermitions.Admin))
             {
                 addorUpdateProduct.ShowDialog();                
             }
@@ -53,7 +53,7 @@ namespace RetailStoreManagment.Products
         {
             int ProductID = (int)dataGridView1.CurrentRow.Cells[0].Value;
             AddorUpdateProduct addorUpdateProduct = new AddorUpdateProduct(ProductID);
-            if (clsGlobal.CheckPermition(clsUsers.enMainMenuPermitions.Admin))
+            if (clsGlobal.CheckPermition(Users.enMainMenuPermitions.Admin))
             {
                 addorUpdateProduct.ShowDialog();
             }
@@ -68,8 +68,8 @@ namespace RetailStoreManagment.Products
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int ProductID = (int)dataGridView1.CurrentRow.Cells[0].Value;
-            clsProducts product = clsProducts.GetProductByID(ProductID);
-            if (clsGlobal.CheckPermition(clsUsers.enMainMenuPermitions.Admin))
+            BussinessLayer.Products product = BussinessLayer.Products.GetProductByID(ProductID);
+            if (clsGlobal.CheckPermition(Users.enMainMenuPermitions.Admin))
             {
                 if (MessageBox.Show("Are You Sure Delete This Product ? ", "Ensure", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
                 {

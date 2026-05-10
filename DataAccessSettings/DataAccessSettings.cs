@@ -8,6 +8,6 @@ namespace DataAccessSettings
 {
     public static class DataAccessSettings
     {
-        public static string ConnictionString = "Server=.;Database=RetailDB;User Id=sa;Password=123456;";
+        public static string ConnictionString = "Server=LocalHost;Database=RetailDB;User Id=sa;Password=123456;Encrypt=False;TrustServerCertificate=True;Connection Timeout=30;";
     }
 }

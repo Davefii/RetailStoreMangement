@@ -9,7 +9,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static BussinessLayer.clsSupplier;
+using static BussinessLayer.Supplier;
 
 namespace RetailStoreManagment.Suppliers
 {
@@ -18,7 +18,7 @@ namespace RetailStoreManagment.Suppliers
         public delegate void DataBackEventHandler (object sender, int SupplierID);
         public event DataBackEventHandler DataBack;
         private int _ID = -1;
-        clsSupplier supplier;
+        Supplier supplier;
         public AddorUpdateSupplier()
         {
             LoadDataAddMode();
@@ -34,12 +34,12 @@ namespace RetailStoreManagment.Suppliers
         private void LoadDataAddMode()
         {
             this.Text = "Add Supplier";
-            supplier = new clsSupplier();
+            supplier = new Supplier();
         }
         private void LoadDataUpdateMode(int ID)
         {
             this.Text = "Edit Supplier";
-            supplier = clsSupplier.GetSupplierByID(ID);
+            supplier = Supplier.GetSupplierByID(ID);
             lblID.Text = supplier.ID.ToString();
             txbSupplierName.Text = supplier.Supplier_Name;
             txdcontactname.Text = supplier.Contact_Person;
@@ -53,7 +53,7 @@ namespace RetailStoreManagment.Suppliers
         }
         private void AddorUpdateSupplier_Load(object sender, EventArgs e)
         {
-            if (supplier.Mode == clsSupplier.enMode.AddNew)
+            if (supplier.Mode == Supplier.enMode.AddNew)
             {
                 LoadDataAddMode();
             }
@@ -89,7 +89,7 @@ namespace RetailStoreManagment.Suppliers
                     MessageBoxIcon.Information
                 );
                 _ID = supplier.ID;
-                supplier.Mode = clsSupplier.enMode.Update;
+                supplier.Mode = Supplier.enMode.Update;
                 AddorUpdateSupplier_Load(null, null);
             }
             else

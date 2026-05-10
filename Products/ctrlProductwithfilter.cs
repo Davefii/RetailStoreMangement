@@ -16,11 +16,11 @@ namespace RetailStoreManagment.Products
     {
         private int _ProductID = -1;
         private string _ProductName = string.Empty;
-        private clsSupplier _supplier;
-        private clsProducts _product;
+        private Supplier _supplier;
+        private BussinessLayer.Products _product;
         private bool _ShowAddProduct;
         public int Product_ID { get { return _ProductID; } }
-        public clsProducts Selectedproductinfo { get { return _product; } }
+        public BussinessLayer.Products Selectedproductinfo { get { return _product; } }
         public bool ShowAddSupplier
         {
             get { return _ShowAddProduct; }

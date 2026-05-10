@@ -16,7 +16,7 @@ namespace RetailStoreManagment.Products
         public delegate void DataBackEventHandler(object sender, int ProductID);
         public event DataBackEventHandler DataBack;
         private int _ID = -1;
-        private clsProducts _product;
+        private BussinessLayer.Products _product;
         public AddorUpdateProduct()
         {
             InitializeComponent();
@@ -29,14 +29,14 @@ namespace RetailStoreManagment.Products
         private void LoadDataAddMode()
         {
             this.Text = "Add Product";
-            _product = new clsProducts();
+            _product = new BussinessLayer.Products();
             ctrlSupplierInfowithFilter1.ShowAddSupplier = true;
             tabPage2.Enabled = false;
         }
         private void LoadDataUpdateMode()
         {
             this.Text = "Update Product";
-            _product = clsProducts.GetProductByID(_ID);
+            _product = BussinessLayer.Products.GetProductByID(_ID);
             lblID.Text = _product.ID.ToString();
             ctrlSupplierInfowithFilter1.ShowAddSupplier = false;
             ctrlSupplierInfowithFilter1.LoadData(_product.Supplier_ID);
@@ -92,7 +92,7 @@ namespace RetailStoreManagment.Products
                );
                 lblID.Text = _product.ID.ToString();
                 this.Text = "Update Product";
-                _product.Mode = clsProducts.enMode.Update;
+                _product.Mode = BussinessLayer.Products.enMode.Update;
                 AddorUpdateProduct_Load(null, null);
             }
             else

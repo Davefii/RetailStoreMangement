@@ -15,9 +15,9 @@ namespace RetailStoreManagment.Products
     {
         private int _ID = -1; 
         private string _ProductName = string.Empty;
-        private clsProducts _product;
+        private BussinessLayer.Products _product;
         public int Product_ID { get { return _ID; } }
-        public clsProducts SelectedProductinfo { get { return _product; } }
+        public BussinessLayer.Products SelectedProductinfo { get { return _product; } }
         public ctrlProductInfo()
         {
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace RetailStoreManagment.Products
         {
             _ID = ID;
             lblID.Text = _ID.ToString();
-            _product = clsProducts.GetProductByID(_ID);
+            _product = BussinessLayer.Products.GetProductByID(_ID);
             if (_product == null)
             {
                 MessageBox.Show("Not Found","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
@@ -40,7 +40,7 @@ namespace RetailStoreManagment.Products
         public void LoadInfo(string ProductName)
         {
             _ProductName = ProductName;
-            _product = clsProducts.GetProductByName(_ProductName);
+            _product = BussinessLayer.Products.GetProductByName(_ProductName);
             if (_product == null)
             {
                 MessageBox.Show("Not Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

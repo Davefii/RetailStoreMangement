@@ -14,9 +14,9 @@ namespace RetailStoreManagment.User
     public partial class ctrlUserInfo : UserControl
     {
         private int _ID = -1;
-        private clsUsers _User;
+        private Users _User;
         public int User_ID { get { return _ID; } }
-        public clsUsers SelectedUserInfo { get { return _User; } }
+        public Users SelectedUserInfo { get { return _User; } }
         public ctrlUserInfo()
         {
             InitializeComponent();
@@ -24,11 +24,11 @@ namespace RetailStoreManagment.User
         public void LoadData(int ID)
         {
             _ID = ID;
-            _User = clsUsers.GetUserByID(_ID);
+            _User = Users.GetUserByID(_ID);
             lblID.Text = _User.ID.ToString();
             lblusername.Text = _User.UserName;
             lblisActive.Text = _User.isActive ? "Yes" : "No";
-            lblPermitions.Text = clsGlobal.CheckPermition(clsUsers.enMainMenuPermitions.Admin) ? "Admin" : "Staff (Cashier) or Viewer";
+            lblPermitions.Text = clsGlobal.CheckPermition(Users.enMainMenuPermitions.Admin) ? "Admin" : "Staff (Cashier) or Viewer";
         }
     }
 }

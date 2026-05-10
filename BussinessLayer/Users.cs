@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BussinessLayer
 {
-    public class clsUsers
+    public class Users
     {
         enum enMode { Addnew = 0, Update = 1 }
         [Flags]
@@ -24,7 +24,7 @@ namespace BussinessLayer
         public enMainMenuPermitions Permitions { get; set; }
         public bool isActive { get; set; }
         enMode Mode;
-        public clsUsers ()
+        public Users ()
         {
             this.ID = -1;
             this.UserName = string.Empty;
@@ -33,7 +33,7 @@ namespace BussinessLayer
             this.isActive = false;
             Mode = enMode.Addnew;
         }
-        private clsUsers(int ID, string userName, string password,byte permitions, bool IsActive)
+        private Users(int ID, string userName, string password,byte permitions, bool IsActive)
         {
             this.ID = ID;
             this.UserName = userName;
@@ -50,33 +50,46 @@ namespace BussinessLayer
         {
             return DataUsers.GetAllLoginHistory();
         }
-        public static clsUsers GetUserByID(int ID)
+        public static Users GetUserByID(int ID)
         {
             string userName = ""; string password = "";  byte permitions = 0; bool IsActive = false;
             bool isFound = DataUsers.GetUserByID(ID,ref userName, ref password, ref permitions, ref IsActive);
             if (isFound)
-                return new clsUsers(ID, userName, password, permitions, IsActive);
+                return new Users(ID, userName, password, permitions, IsActive);
             else
                 return null;
         }
-        public static clsUsers GetUserNamewithPassword(string UserName,string Password)
+        public static Users GetUserNamewithPassword(string UserName,string Password)
         {
-            int ID = -1; byte permitions = 0; bool isActive = false;
-            bool isFound = DataUsers.GetUserByUserNameandPassword(ref ID, UserName, Password, ref permitions, ref isActive);
+            int ID = -1; byte permitions = 0; bool isActive = false; string storedHash = null;
+            bool isFound = DataUsers.GetUserByUserNameandPassword(ref ID, UserName, ref storedHash, ref permitions, ref isActive);
             byte savehistory = DataUsers.AddLogos(ID, DateTime.Now);
-            if (isFound && savehistory >= 0)
-                return new clsUsers(ID, UserName, Password, permitions, isActive);
-            else
+            //if (isFound && savehistory >= 0)
+            //    return new clsUsers(ID, UserName, Password, permitions, isActive);
+            //else
+            //    return null;
+            if (!isFound)
                 return null;
+            // Verify plaintext password against hash
+            bool verified = BCrypt.Net.BCrypt.Verify(Password, storedHash);
+
+            if (!verified)
+                return null;
+            if (savehistory < 0)
+                return null;
+
+            return new Users(ID, UserName, Password, permitions, isActive);
         }
         public bool Addnewuser()
         {
-            this.ID = DataUsers.AddNewUser(this.UserName, this.Password, (byte)this.Permitions, this.isActive);
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(this.Password);
+            this.ID = DataUsers.AddNewUser(this.UserName, hashedPassword, (byte)this.Permitions, this.isActive);
             return (this.ID != -1);
         }
         public bool UpdateUser()
         {
-            return DataUsers.UpdateUser(this.ID, this.UserName, this.Password, (byte)this.Permitions, this.isActive);
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(this.Password);
+            return DataUsers.UpdateUser(this.ID, this.UserName, hashedPassword, (byte)this.Permitions, this.isActive);
         }
         public bool DeleteUser()
         {
@@ -100,11 +113,13 @@ namespace BussinessLayer
         }
         public bool Changepassword(string Password)
         {
-            return DataUsers.ChangePassword(this.ID, Password);
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(Password);
+            return DataUsers.ChangePassword(this.ID, hashedPassword);
         }
         public static bool ChangepasswordAnyone(int ID, string Password)
         {
-            return DataUsers.ChangePassword(ID, Password);
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(Password);
+            return DataUsers.ChangePassword(ID, hashedPassword);
         }
     }
 }

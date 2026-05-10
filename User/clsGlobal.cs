@@ -10,7 +10,7 @@ namespace BussinessLayer
 {
     public class clsGlobal
     {
-        public static clsUsers CurrentUser;
+        public static Users CurrentUser;
 
         public static bool RememberUserNameandPassword(string username, string password)
         {
@@ -58,9 +58,9 @@ namespace BussinessLayer
                 return false;
             }
         }
-        public static bool CheckPermition(clsUsers.enMainMenuPermitions mainMenuPermition)
+        public static bool CheckPermition(Users.enMainMenuPermitions mainMenuPermition)
         {
-            if (CurrentUser.Permitions == clsUsers.enMainMenuPermitions.Admin)
+            if (CurrentUser.Permitions == Users.enMainMenuPermitions.Admin)
                 return true;
             if ((CurrentUser.Permitions & mainMenuPermition) == mainMenuPermition)
                 return true;

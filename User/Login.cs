@@ -41,7 +41,7 @@ namespace RetailStoreManagment.User
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            clsGlobal.CurrentUser = clsUsers.GetUserNamewithPassword(txbusername.Text, txbpassword.Text);
+            clsGlobal.CurrentUser = Users.GetUserNamewithPassword(txbusername.Text, txbpassword.Text);
             if (clsGlobal.CurrentUser != null)
             {
                 clsGlobal.RememberUserNameandPassword(txbusername.Text, txbpassword.Text);

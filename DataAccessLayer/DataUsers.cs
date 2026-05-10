@@ -86,7 +86,7 @@ namespace DataAccessLayer
                 return isFound;
             }
         }
-        public static bool GetUserByUserNameandPassword(ref int ID, string username, string password, ref byte Permition,ref bool IsActive)
+        public static bool GetUserByUserNameandPassword(ref int ID, string username, ref string storedHash, ref byte Permition, ref bool IsActive)
         {
             bool isFound = false;
             using (SqlConnection connection = new SqlConnection(DataAccessSettings.DataAccessSettings.ConnictionString))
@@ -94,22 +94,27 @@ namespace DataAccessLayer
             {
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@UserName", username);
-                command.Parameters.AddWithValue("@Password", password);
+
                 var IDParam = new SqlParameter("@ID", SqlDbType.Int) { Direction = ParameterDirection.Output };
+                var PasswordParam = new SqlParameter("@Password", SqlDbType.VarChar, 255) { Direction = ParameterDirection.Output };
                 var PermitionParam = new SqlParameter("@Permition", SqlDbType.TinyInt) { Direction = ParameterDirection.Output };
                 var IsActiveParam = new SqlParameter("@isActive", SqlDbType.Bit) { Direction = ParameterDirection.Output };
                 var IsFoundParam = new SqlParameter("@IsFound", SqlDbType.Bit) { Direction = ParameterDirection.Output };
+
                 command.Parameters.Add(IDParam);
+                command.Parameters.Add(PasswordParam);
                 command.Parameters.Add(PermitionParam);
                 command.Parameters.Add(IsActiveParam);
                 command.Parameters.Add(IsFoundParam);
+
                 try
                 {
                     connection.Open();
                     command.ExecuteNonQuery();
                     if (IDParam.Value != DBNull.Value) ID = (int)IDParam.Value;
-                    if (IsActiveParam.Value != DBNull.Value) IsActive = Convert.ToBoolean(IsActiveParam.Value);
+                    if (PasswordParam.Value != DBNull.Value) storedHash = (string)PasswordParam.Value;
                     if (PermitionParam.Value != DBNull.Value) Permition = Convert.ToByte(PermitionParam.Value);
+                    if (IsActiveParam.Value != DBNull.Value) IsActive = Convert.ToBoolean(IsActiveParam.Value);
                     isFound = (IsFoundParam.Value != DBNull.Value) && Convert.ToBoolean(IsFoundParam.Value);
                 }
                 catch (Exception ex) { Debug.WriteLine(ex); isFound = false; }
@@ -117,6 +122,39 @@ namespace DataAccessLayer
                 return isFound;
             }
         }
+        //public static bool GetUserByUserNameandPassword(ref int ID, string username, ref string password, ref byte Permition,ref bool IsActive)
+        //{
+        //    bool isFound = false;
+        //    using (SqlConnection connection = new SqlConnection(DataAccessSettings.DataAccessSettings.ConnictionString))
+        //    using (SqlCommand command = new SqlCommand("Sp_GetUserByUserNameAndPassword", connection))
+        //    {
+        //        command.CommandType = CommandType.StoredProcedure;
+        //        command.Parameters.AddWithValue("@UserName", username);
+        //        var IDParam = new SqlParameter("@ID", SqlDbType.Int) { Direction = ParameterDirection.Output };
+        //        var Passwordparam = new SqlParameter("@Password", SqlDbType.VarChar, 255) { Direction = ParameterDirection.Output };
+        //        var PermitionParam = new SqlParameter("@Permition", SqlDbType.TinyInt) { Direction = ParameterDirection.Output };
+        //        var IsActiveParam = new SqlParameter("@isActive", SqlDbType.Bit) { Direction = ParameterDirection.Output };
+        //        var IsFoundParam = new SqlParameter("@IsFound", SqlDbType.Bit) { Direction = ParameterDirection.Output };
+        //        command.Parameters.Add(IDParam);
+        //        command.Parameters.Add(Passwordparam);
+        //        command.Parameters.Add(PermitionParam);
+        //        command.Parameters.Add(IsActiveParam);
+        //        command.Parameters.Add(IsFoundParam);
+        //        try
+        //        {
+        //            connection.Open();
+        //            command.ExecuteNonQuery();
+        //            if (IDParam.Value != DBNull.Value) ID = (int)IDParam.Value;
+        //            if (Passwordparam.Value != DBNull.Value) password = (string)Passwordparam.Value;
+        //            if (IsActiveParam.Value != DBNull.Value) IsActive = Convert.ToBoolean(IsActiveParam.Value);
+        //            if (PermitionParam.Value != DBNull.Value) Permition = Convert.ToByte(PermitionParam.Value);
+        //            isFound = (IsFoundParam.Value != DBNull.Value) && Convert.ToBoolean(IsFoundParam.Value);
+        //        }
+        //        catch (Exception ex) { Debug.WriteLine(ex); isFound = false; }
+        //        finally { if (connection.State == ConnectionState.Open) connection.Close(); }
+        //        return isFound;
+        //    }
+        //}
         public static int AddNewUser(string username, string password, byte Permition, bool IsActive)
         {
             int? UserID = null;
